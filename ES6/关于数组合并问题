@@ -1,0 +1,73 @@
+
+
+这是一直想写的问题，只是还没有时间，抽了一些时间来继续学习数组相关只是，因此顺便讨论一下关于数组合并问题
+
+项目中用到的内容，先描述一下需求： 本地维护了一个对象数组，然后有一个按钮继续往这个数组中添加数据，因此往本地数据添加的时候就需要判断这条数据是否已经添加过了
+对于我这样的新手，在网上也查了不少的资料，最终解决了这个问题。
+
+先上一段代码：
+
+//本地数组
+let localArr = [
+{id: 1, name: "jack", age: 18, sex: "男"},
+{id: 2, name: "lily", age: 18, sex: "女"},
+{id: 3, name: "jixi", age: 18, sex: "男"}
+]
+//添加到本地数组的数组（有点拗口，怪我咯！）
+let addArr = [
+{id: 4, name: "小花", age: 10, sex: "女"},
+{id: 2, name: "lily", age: 18, sex: "女"},
+{id: 5, name: "菜菜", age: 1, sex: "女"}
+];
+//以上唯一标识为id
+//最笨的实现方法
+let latestArr = []; //存放需要添加到本地数组的数据
+
+addArr.forEach(item => {
+  let addFlag = false;
+  for(i=0,length=localArr.length; i< length; i++) {
+    if(item.id == localArr[i].id) {
+      addFlag = true;
+      break;
+    }
+  }
+  if(!addFlag) {
+    latestArr.push(item);
+  }
+});
+
+localArr.push(...latestArr);
+
+localArr为最终合并后的数据，这个应该是最笨的方法了，循环两个数组，一遍一遍的比较，复杂程度为m*n
+
+解决了需求
+
+对象数组比较特殊，如果是一般的数组还比较好判断一些，复杂程度没那么高，可是使用Set集合，大家都知道的道理。
+
+对于对象数组还有一种复杂程度比较低，但是比较麻烦的方法，就是利用Map对象
+
+将数组放入Map对象中，利用Map的key的唯一性可以得到一组不重复的数组，然后再讲Map转换为数组，这个复杂程度要低很多，为m.
+
+let map = new Map();
+
+let mapArr = localArr.concat(addArr);
+
+mapArr.forEach(item => {
+  let val = {name: item.name, age: item.age, sex: item.sex};
+  map.set(item.id, val);
+});
+
+let resultArr = [];
+for(var key in map) {
+  let obj = map[key];
+  obj.id = key;
+  resultArr.push(obj);
+}
+
+
+
+
+
+
+
+
