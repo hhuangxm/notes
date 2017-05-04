@@ -1,2 +1,2 @@
 # notes
-something notes by my think
+something notes by my learn
