@@ -58,11 +58,12 @@ mapArr.forEach(item => {
 });
 
 let resultArr = [];
-for(var key in map) {
-  let obj = map[key];
+
+map.forEach((key,value) => {
+  let obj = value;
   obj.id = key;
   resultArr.push(obj);
-}
+});
 
 
 
