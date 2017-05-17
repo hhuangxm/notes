@@ -1,0 +1,46 @@
+
+Object提供了很多便捷的方法，前面已经介绍过Object.assign方法了，这里简单介绍自己想知道的其他方法吧，
+说是自己想知道的，没说是全部的，因为Object的所有方法我也不是都需要用到，慢慢学吧
+
+（1）Object.keys()
+  该方法返回一个数组，成员是参数对象自身的（不含继承属性）所有可遍历的（enumeration）属性的键名。
+  
+  //code
+  let obj = {
+    a: 1,
+    b: 2,
+    c: 3
+  }
+  Object.keys(obj); // ["a", "b", "c"];
+  
+  (2) Object.values()
+    该方法也返回一个数组，但是与Object.keys方法不同的是，Object.values方法返回的是成员参数对象自身（不含继承属性）所有可遍历（enumeration）属性的键值。
+    
+    //code
+    let obj = {
+      a: 1,
+      b: 2,
+      c: 3
+    } 
+    Object.values(obj); //[1,2,3]
+
+如果参数不是对象，Object.values会先将其转为对象。由于数值和布尔值的包装对象，都不会为实例添加非继承的属性。所以，Object.values会返回空数组。
+
+ （3） Object.entries()
+    该方法返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值对数组。
+    //code
+    let obj = {
+      a: 1,
+      b: 2,
+      c: 3
+    } 
+    Object.entries(obj); //[["a",1], ["b", 2], ["c", 3]]
+    
+    Object.entries方法的另一个用处是，将对象转为真正的Map结构。(比较有用的点，对象转Map）
+    
+    //code
+    var obj = { foo: 'bar', baz: 42 };
+    var map = new Map(Object.entries(obj));
+    map // Map { foo: "bar", baz: 42 }
+    
+    
