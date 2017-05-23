@@ -1,0 +1,22 @@
+仔细想想,还真的没有认真看过事件，因此打算看一遍。
+
+看的是JavaScript权威指南，概念一会再说，觉得讲得比较详细，不认真看可能都看不懂的样子，可是文字又那么多，我又不太喜欢这么多文字，真是伤脑筋。
+
+先附上一段自己觉得好的代码，就和标题一样的，关于这两个方法的代码。
+
+IE8以前不支持addEventListener方法，但是IE5-IE8支持attachEvent方法
+
+//code
+
+var b = document.getElementById("myButton");
+
+var handler = function() {
+  alert("thanks!");
+}
+
+//监听myButton的click事件
+if(b.addEventListener) {
+  b.addEventListener("click", handler, false);
+} else if(b.attachEvent) {
+  b.attachEvent("onclick", handler);
+}
