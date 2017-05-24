@@ -1,0 +1,19 @@
+读书发现以后可能有帮助的方法，特此记下：
+
+function urlArgs() {
+  var args = {}; //定义一个空对象
+  
+  var query = location.search.substring(1); //查询到字符串并去掉？
+  
+  var pairs = query.split("&");
+  
+  for(var i=0; i< pairs.length; i++) {
+    var pos = pairs[i].indexOf("=");
+    if(pos == -1) continue;
+    var name = pairs[i].substring(0,pos);
+    var value = pairs[i].substring(pos+1);
+    value = decodeURIComponent(value);
+    args[name] = value;
+  }
+  return args;
+}
