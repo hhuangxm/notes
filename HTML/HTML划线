@@ -14,8 +14,8 @@
 <s>&lt;u&gt;标签加下划线</s>
 <strike>&lt;u&gt;标签加下划线</strike>
 
-这两种标签在W3C中都不建议
-而应该通过CSS的text-decoration属性来定义
+这两种标签在W3C中都不建议，建议通过<del>标签
+或者CSS的text-decoration属性来定义
 
 text-decoration: 
     none              默认。定义标准的文本。
