@@ -1,0 +1,31 @@
+下划线：
+
+1. 通过HTML的<u></u>标签
+
+例子：<u>&lt;u&gt;标签加下划线</u>
+
+2. 通过CSS添加下滑线
+
+例子：<div style="text-decoration: underline;">CSS添加下划线</div>
+
+建议使用CSS添加下划线，因为W3C上不建议使用<u></u>标签
+
+删除线：
+<s>&lt;u&gt;标签加下划线</s>
+<strike>&lt;u&gt;标签加下划线</strike>
+
+这两种标签在W3C中都不建议
+而应该通过CSS的text-decoration属性来定义
+
+text-decoration: 
+    none              默认。定义标准的文本。
+
+　　underline         定义文本下的一条线。
+
+　　overline          定义文本上的一条线。
+
+　　line-through      定义穿过文本下的一条线。即是删除线
+
+　　blink             定义闪烁的文本。
+
+　　inherit           规定应该从父元素继承 text-decoration 属性的值。
