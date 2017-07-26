@@ -193,6 +193,52 @@
   	<input type="date" name="bday">
 	</form> 
 	<hr>
-
+	
+	<p>下班之前还没有写完，回到家里，忙完了该忙的，然后想着把这个继续补充完吧，但是谁知道家里的电脑不给力呢！打字都慢，还有下载一个windows版本的git bash也是慢的不行，简直了，不想说，然后只能在github上直接编辑啦，废话不多说，好好学习天天向上</p>
+	
+	<p><strong>输入类型： datetime，datetime-local</strong></p>
+	<i>这两个都是有时分秒的日期类型，不同的是datetime的是有时区的，而datetime-local是没有时区的，就这么简单的区别，用法什么的也都一样，就不一一举例子了</i>
+	<p>实例：</p>
+	<pre>
+	&lt;form&gt;
+		Birthday (date and time):
+		&lt;input type="datetime" name="bday"&gt;
+	&lt;/form&gt;  
+	</pre>
+	<p>显示效果：</p>
+	<form>
+		Birthday (date and time):
+  		<input type="datetime" name="bday">
+	</form> 
+	<hr>
+	
+	<p><strong>输入类型：month, week, time, </strong></p>
+	<i>这三种类型的输入框就不介绍了，简单说一下概念就好，用法都一样，只是功能有一些稍微的差异，month,允许用户选择月份和年份。weebk,允许用户选择周和年。time,允许用户选择时间（无时区）。</i>
+	<hr/>
+	
+	<p><strong>输入类型：email</strong></p>
+	<i>email类型的输入框啊，哈哈，happy, 个人也不太喜欢做email这样的验证，虽然第三方的库一般都提供这样基础的验证，但是为何我们还要那么麻烦的引入第三方库呢！机智如我</i>
+	<p>实例：</p>
+	<pre>
+	&lt;form&gt;
+		&lt;input type="email" name="email"&gt;
+	&lt;/form&gt;  
+	</pre>
+	<p>显示效果：</p>
+	<form>
+		Email:
+  		<input type="email" name="email">
+	</form> 
+	<hr>
+	
+	<p><strong>输入类型：number</strong></p>
+	<i>当然是输入数字类型的啦，这还用说，而且还可以配合min,max属性，将数字大小控制在一个范围内，当然text类型也可以控制字符串的长度，使用的是minlength,maxlength</i>
+	
+	<hr>
+	<p><strong>输入类型：range</strong></p>
+	<i>用于应该包含一定范围内的值的输入字段。</i>
+	
+	<hr>
+	
 </body>
 </html>
