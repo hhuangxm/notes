@@ -1,0 +1,11 @@
+介绍两种加下划线的方法：
+
+1. 通过HTML的<u></u>标签
+
+例子：<u>&lt;u&gt;标签加下划线</u>
+
+2. 通过CSS添加下滑线
+
+例子：<div style="text-decoration: underline;">CSS添加下划线</div>
+
+建议使用CSS添加下划线，因为W3C上不建议使用<u></u>标签
