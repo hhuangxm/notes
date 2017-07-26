@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML输入类型</title>
+
+	<style>
+		header {
+			background-color: #fff;
+			margin: 5px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<header><h1>HTML输入类型</h1></header>
+	<hr>
+	<p>
+		平时使用input标签的时候，也只是知道&lt;input type="text"&gt;这样使用input标签，但是HTML5却增加了很多input类型：
+	</p>
+
+	<p><b>输入类型：text</b></p>
+	<i>这个应该是最常用的类型了，只要有表单输入，基本都会用到的类型</i>
+	<p>实例：</p>
+	<pre>
+	&lt;form&gt;
+		First name:&lt;br&gt;
+		&lt;input type="text" name="firstname"&gt;
+		&lt;br&gt;
+	 	Last name:&lt;br&gt;
+		&lt;input type="text" name="lastname"&gt;
+	&lt;/form&gt; 
+	</pre>
+	<p>显示效果：</p>
+	<form>
+ 		First name:<br>
+		<input type="text" name="firstname">
+		<br>
+ 		Last name:<br>
+		<input type="text" name="lastname">
+	</form>
+	<hr>
+
+	<p><b>输入类型：password</b></p>
+	<i>输入一些保密信息，如用户密码等时，使用password，这个也算是比较常见的类型</i>
+	<p>实例：</p>
+	<pre>
+	&lt;form&gt;
+		User name:&lt;br&gt;
+		&lt;input type="text" name="username"&gt;
+		&lt;br&gt;
+	 	User password:&lt;br&gt;
+		&lt;input type="password" name="psw"&gt;
+	&lt;/form&gt; 
+	</pre>
+	<p>显示效果：</p>
+	<form>
+ 		User name:<br>
+		<input type="text" name="username">
+		<br>
+ 		User password:<br>
+		<input type="password" name="psw">
+	</form>
+	<hr>
+
+	<p><strong>输入类型：submit</strong></p>
+	<i>这个也是常用的类型，提交表单处理程序的按钮</i>
+	<p>实例：</p>
+	<pre>
+	&lt;form&gt;
+		First name:&lt;br&gt;
+		&lt;input type="text" name="firstname"&gt;
+		&lt;br&gt;
+	 	Last name:&lt;br&gt;
+		&lt;input type="text" name="lastname"&gt;
+		&lt;br&gt;
+		&lt;input type="submit" value="Submit"&gt;
+	&lt;/form&gt;  
+	</pre>
+	<p>显示效果：</p>
+	<form>
+ 		First name:<br>
+		<input type="text" name="firstname">
+		<br>
+ 		Last name:<br>
+		<input type="text" name="lastname">
+		<br>
+		<input type="submit" value="Submit">
+	</form>
+	<hr>
+
+	<p><strong>输入类型： radio</strong></p>
+	<i>单选按钮，也都知道，比较常用</i>
+	<p>实例：</p>
+	<pre>
+	&lt;form&gt;
+		&lt;input type="radio" name="sex" value="male" checked&gt;Male
+		&lt;br&gt;
+		&lt;input type="radio" name="sex" value="female"&gt;Female
+	&lt;/form&gt;  
+	</pre>
+	<p>显示效果：</p>
+	<form>
+		<input type="radio" name="sex" value="male" checked>Male
+		<br>
+		<input type="radio" name="sex" value="female">Female
+	</form> 
+	<hr>
+
+	<p><strong>输入类型： checkbox</strong></p>
+	<i>接下来肯定是复选按钮，也都知道，比较常用</i>
+	<p>实例：</p>
+	<pre>
+	&lt;form&gt;
+		&lt;input type="checkbox" name="vehicle" value="Bike"&gt;I have a bike
+		&lt;br&gt;
+		&lt;input type="checkbox" name="vehicle" value="Car"&gt;I have a car 
+	&lt;/form&gt;  
+	</pre>
+	<p>显示效果：</p>
+	<form>
+		<input type="checkbox" name="vehicle" value="Bike">I have a bike
+		<br>
+		<input type="checkbox" name="vehicle" value="Car">I have a car 
+	</form> 
+	<hr>
+
+	<p><strong>输入类型： button</strong></p>
+	<i>个人不经常用这个，因为可以使用button标签代替</i>
+	<p>实例：</p>
+	<pre>
+	&lt;form&gt;
+		&lt;input type="button" onclick="alert('Hello World!')" value="Click Me!"&gt;
+	&lt;/form&gt;  
+	</pre>
+	<p>显示效果：</p>
+	<form>
+		<input type="button" onclick="alert('Hello World!')" value="Click Me!">
+	</form> 
+	<hr>
+	
+	<div>
+		<strong>
+			想介绍的是HTML5增加的一些输入类型：
+		</strong>
+		<ul>
+			<li>color</li>
+			<li>date</li>
+			<li>datetime</li>
+			<li>datetime-local</li>
+			<li>email</li>
+			<li>month</li>
+			<li>number</li>
+			<li>range</li>
+			<li>search</li>
+			<li>tel</li>
+			<li>time</li>
+			<li>url</li>
+			<li>week</li>
+		</ul>
+		<i>增加了这么多类型给我的第一个感觉就是太好了简直，感觉都能涵盖了基本校验类型了，还有一个是input标签还支持pattern正则表达式，想要哭了，已经不能再好了……</i>
+	</div>
+
+	<p><b>慢慢介绍吧！come on！快上车</b></p>
+	<hr>
+
+	<p><strong>输入类型： color</strong></p>
+	<i>这些类型，一看名字就知道意思，&lt;input type="color"&gt;用于应该包含颜色的输入字段。这个很有意思呢，获取到用户输入的颜色之后，可以根据用户输入的颜色改变主题的颜色，很实用呢！越来越有意思了</i>
+	<p>实例：</p>
+	<pre>
+	&lt;form&gt;
+		&lt;input type="color" name="favcolor"&gt;
+	&lt;/form&gt;  
+	</pre>
+	<p>显示效果：</p>
+	<form>
+		Select your favorite color:
+  	<input type="color" name="favcolor">
+	</form> 
+	<hr>
+
+	<p><strong>输入类型： date</strong></p>
+	<i>日期类型的输入框，是不是很惊讶，是不是很惊喜，如果日期支持得好的话，就不需要用第三方的日期库了，不过也只能用在对日期要求不严格的地方，有很多项目还是需要专门的日期控件的，一般使用第三方控件，然后加上自己的封装之后供项目使用，说了一堆废话的感觉，扯远了，赶紧回来。</i>
+	<p>实例：</p>
+	<pre>
+	&lt;form&gt;
+		&lt;input type="date" name="bday"&gt;
+	&lt;/form&gt;  
+	</pre>
+	<p>显示效果：</p>
+	<form>
+		Birthday:
+  	<input type="date" name="bday">
+	</form> 
+	<hr>
+
+</body>
+</html>
