@@ -1,0 +1,47 @@
+transform这个属性还是很有用的，研究一下吧
+
+transform有比较多的属性值，但是主体来说就是对元素做位置变化，比如平移，旋转，倾斜等
+
+看了文档才知道，这个属性的值好多，简单介绍几个觉得常用的吧
+
+（1）rotate() 旋转
+  例子，div正向旋转30度
+  div {
+    height: 100px;
+    width: 100px;
+    border: 1px solid #ddd;
+    transform: rotate(30deg)
+  }
+
+  deg: 表示旋转的度
+
+（2）skew() 倾斜
+  .two {
+    height: 50px;
+    width: 80px;
+    border: 1px solid #ddd;
+    transform: skew(20deg);
+  }
+
+（3）translate() 平移（常用于水平垂直计算）
+  .parent {
+    height: 800px;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+  .child {
+    width: 20%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ddd;
+  }
+
+（4）scale()缩放
+  .two {
+    height: 50px;
+    width: 80px;
+    border: 1px solid #ddd;
+    transform: scale(0.5, 2);
+  }

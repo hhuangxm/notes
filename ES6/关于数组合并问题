@@ -40,6 +40,29 @@ localArr.push(...latestArr);
 
 localArr为最终合并后的数据，这个应该是最笨的方法了，循环两个数组，一遍一遍的比较，复杂程度为m*n
 
+我去面试的时候问了两个人这个问题，感觉都不是很理想，现在想想好像也有一些新的见解，写一下，
+上面的那个循环了两层，现在觉得可以先将数组合并，然后再进行排重应该也是可以的，当然我会用我的浏览器来验证一下才会写下来这一段代码：
+
+let mergeArr = localArr.concat(addArr) //合并后的数组
+let resultArr = [] //存放最终的数组
+
+// id 为判断的唯一键
+Array.prototype.filter = function(id){  
+    for(var i=0, temp={}, result=[], ci; ci=this[i++];){  
+        var id = ci[id];  
+        if(temp[id]){  
+            continue;  
+        }  
+        temp[id] = true;  
+        result.push(ci);  
+    }  
+    return result;  
+};
+
+resultArr = mergeArr.filter('id')
+
+上面的这个filer方法是在网上找到的，可以实现功能，思路和下面的map一致，感觉会比map好一些，这个不用再遍历map了，所以效率相对于来说应该会比较高
+
 解决了需求
 
 对象数组比较特殊，如果是一般的数组还比较好判断一些，复杂程度没那么高，可是使用Set集合，大家都知道的道理。
@@ -64,11 +87,4 @@ map.forEach((key,value) => {
   obj.id = key;
   resultArr.push(obj);
 });
-
-
-
-
-
-
-
 

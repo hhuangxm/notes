@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-for key的就地复用策略</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  <div id="demo">
+    <h1>第一个循环</h1>
+    <ul>
+      <li v-for="item in items" :key="item.id">{{item.name}}</li>
+    </ul>
+    <h1>第二个循环</h1>
+    <ul>
+      <li v-for="item in items1" :key="item.id">{{item.name}}</li>
+    </ul>
+  </div>
+  <div>
+    <p>总结：</p>
+    <p>这个例子举的不准确，并且观察不到DOM的变化，而且语言还不好表达与理解</p>
+    <p>Vue.js使用v-for渲染过的列表时，默认采用“就地复用”策略，如果只是简单的改变了顺序，Vue将不会移动DOM的顺序来匹配数据，而是简单复用此处的每个DOM元素，并且确保它在特定索引下显示已被渲染过的每个元素。</p>
+    <p>为了给 Vue 一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一 key 属性。理想的 key 值是每项都有的且唯一的 id。</p>
+  </div>
+</body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+  new Vue({
+    el: '#demo',
+    data() {
+      return {
+        items: [{
+          id: 1,
+          name: 'item1'
+        }, {
+          id: 2,
+          name: 'item2'
+        }, {
+          id: 3,
+          name: 'item3'
+        }],
+        items1: [{
+          id: 1,
+          name: 'item1+1'
+        }, {
+          id: 2,
+          name: 'item1+2'
+        }, {
+          id: 3,
+          name: 'item1+3'
+        }]
+      }
+    },
+
+    created() {
+      console.log('aaa')
+    }
+  })
+</script>

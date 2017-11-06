@@ -1,0 +1,32 @@
+Javascript相关
+
+1. Javascript运行机制
+  Javascript是单线程语言，运行机制采用的是Event Loop
+
+2. 什么是Event Loop, 以及Event Loop的原理是什么？
+  笼统的说Event Loop 指的是计算机系统的一种运行机制。
+  Wikipedia这样定义："Event Loop是一个程序结构，用于等待和发送消息和事件。（a programming construct that waits for and dispatches events or messages in a program.）"
+  简单说，就是在程序中设置两个线程：一个负责程序本身的运行，称为"主线程"；另一个负责主线程与其他进程（主要是各种I/O操作）的通信，被称为"Event Loop线程"（可以译为"消息线程"）。
+  原理：每当遇到消耗时间的I/O操作时，主线程就让Event Loop线程去通知相应的I/O程序，然后接着往后运行。等到I/O程序完成操作，Event Loop线程再把结果返回主线程。主线程就调用事先设定的回调函数，完成整个任务。
+
+Vue相关
+
+1. 使用v-for循环的时候，动态绑定key的作用是什么？
+  
+  使用v-for循环已经渲染过的列表时，Vue。js默认采用"就地复用"的策略。如果数据项的顺序被改变，Vue将不会移动DOM元素来匹配数据项的顺序，而是简单的复用此处每个元素，并且确保它在特定索引下显示已被渲染过的每个元素。
+  为了给 Vue 一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一 key 属性。理想的 key 值是每项都有的且唯一的 id。（理解和例子画图很重要）
+
+2. 组件
+  组件注册：全局注册使用Vue.component('组件名', {})和局部注册，在Vue对象中，使用components: {'组件名': Component}
+
+  is特性的作用：
+    某些元素，如<ul>、<ol>、<table>、<select> 这样的元素里允许包含的元素有限制，在自定义组件中使用这些受限制的元素时会导致一些问题，如：
+    <table>
+      <my-row>...</my-row>
+    </table>
+    自定义组件 <my-row> 会被当作无效的内容，因此会导致错误的渲染结果。变通的方案是使用特殊的 is 特性：
+    <table>
+      <tr is="my-row"></tr>
+    </table>
+
+    动态绑定组件：<components :is="currentComponent"></components>

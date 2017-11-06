@@ -1,0 +1,14 @@
+还是围绕模块化开发问题
+
+原始script标签：
+  <script src="module1.js"></script>
+  <script src="module2.js"></script>
+  <script src="libraryA.js"></script>
+  <script src="module3.js"></script>
+
+弊端：
+  1. 全局作用域下容易造成变量冲突
+  2. 文件只能按照script的书写顺序进行加载
+  3. 开发人员必须主观解决模块和代码库的依赖问题
+  4. 在大型项目中各种资源难以管理，长期积累的问题导致代码库混乱不堪
+

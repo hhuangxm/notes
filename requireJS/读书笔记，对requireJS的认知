@@ -1,0 +1,104 @@
+对AMD和CMD有了一些认知之后，开始了requireJS，其实应该先看requireJS, 因为AMD是requireJS在推广过程中对模块定义的规范化产出，而CMD则是seaJS在推广过程中对模块定义的规范化产出。
+
+上面已经说了AMD（asynchornous module define）和CMD的起源，两者的共同点都是为了JavaScript的模块化开发，都是为模块化开发的规范。再说说一下AMD和CMD的区别：
+
+1. 对于模块的依赖，AMD是提前执行，CMD是延迟执行
+2. AMD推崇依赖前置，而CMD推崇依赖就近。
+  // AMD 
+  define(['./a', './b'], function() {
+    a.doSomething()
+    // ...
+    b.doSomething()
+    //..
+  })
+
+  // CMD
+  define(function(require, exports, module) {
+    var a = require('./a')
+    a.doSomething()
+    var b = require('./b')
+    b.doSomething()
+  })
+
+3. 对于API, AMD默认是一个当多个使用，而CMD则是严格区分，推崇职责单一。
+
+简单介绍了这三点区别，还要详细了解的话就需要去看官网API了
+
+言归正传requireJS
+早期JavaScript代码都写在一个文件里面，随着代码越来越多，一个文件不够之后，分成多个文件，依次加载。
+这样的做法有很大的缺点，首先，加载的时候，浏览器会停止渲染网页，加载文件越多，网页失去响应时间越长；其次，由于js文件之间存在依赖关系，因此必须严格保证加载顺序，当依赖关系很复杂的时候，代码的编写和维护就会变得很困难。此时就产生了requireJS解决以上的两个问题。
+  1. 实现js文件的异步加载，避免网页失去响应。
+  2. 管理模块之间的依赖性，便于代码的编写和维护。
+
+Demo没写好，因为没有服务，浏览器出现了跨域问题，以后再搭个小服务来写。
+
+简单用法：
+在html模板里面引入requireJS以及主程序入口文件main.js
+
+<script src="js/require.js" data-main="js/main"></script>
+
+下来就是编写main.js的问题了
+  // main.js
+　require(['moduleA', 'moduleB', 'moduleC'], function (moduleA, moduleB, moduleC){
+　　// some code here
+　});
+
+require()函数接受两个参数。第一个参数是一个数组，表示所依赖的模块，上例就是['moduleA', 'moduleB', 'moduleC']，即主模块依赖这三个模块；第二个参数是一个回调函数，当前面指定的模块都加载成功后，它将被调用。加载的模块会以参数形式传入该函数，从而在回调函数内部就可以使用这些模块。
+
+require()异步加载moduleA，moduleB和moduleC，浏览器不会失去响应；它指定的回调函数，只有前面的模块都加载成功后，才会运行，解决了依赖性的问题。
+
+使用require.config()方法，我们可以对模块的加载进行自定义。require.config()就写在主模块（main.js）的头部。参数就是一个对象，这个对象的path指定各个模块的加载路径。
+
+require.config({
+  paths: {
+    'jquery': 'js/jquery.min',
+    'underscore': 'js/underscore',
+    'backbone': 'js/backbone'
+  }
+})
+
+上面是直接指定了路径，我们也可以设置一个基路径,比如我们的js都存放在js/lib文件夹下面
+
+require.config({
+  baseUrl: 'js/lib',
+  paths: {
+    'jquery': 'jquery.min',
+    'underscore': 'underscore',
+    'backbone': 'backbone'
+  }
+})
+
+如果某个模块在另一台主机上，也可以直接指定它的网址，比如：
+require.config({
+  path: {
+    'jquery': 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min'
+  }
+})
+
+实际项目中都不会这么做，因为客户一般都有自己的内网，而且有些客户内网是不能访问外网的
+
+requireJS在require.config()方法中提供了一个shim属性专门用来配置不兼容的模块
+
+require.config({
+  shim: {
+    'underscore': {
+      exports: '_'
+    },
+    'backbone': {
+      deps: ['underscore', 'jquery'],
+      exports: 'backBone'
+    }
+  }
+})
+
+（1）exports值（输出的变量名），表明这个模块外部调用时的名称；
+（2）deps数组，表明该模块的依赖性。
+
+比如，jQuery的插件可以这样定义：
+
+shim: {
+　'jquery.scroll': {
+　　　deps: ['jquery'],
+　　　exports: 'jQuery.fn.scroll'
+　}
+}

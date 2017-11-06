@@ -1,0 +1,117 @@
+虽然问题很经典，但是面试过程中发现，还是有很多同学回答不上来，所以就上网搜集了一些方法。
+
+其中我最喜欢的应该是flex了，因为代码量少，简洁，外层固定了高度之后，里面的内容可以不固定高度。先上这个代码
+
+(1) flex水平垂直居中（兼容性IE8以上）
+  html：
+  <div class="parent">
+    <div class="child"></div>
+  </div>
+
+  css: 
+
+  (a)
+  .parent {
+    height: 800px;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .child {
+
+  }
+
+  (b)
+  .parent {
+    height: 800px;
+    border: 1px solid #ddd;
+    display: flex;
+  }
+
+  .child {
+    margin: auto;
+  }
+
+(2) transform水平垂直居中(兼容性比较差，IE9以上)
+  html：
+  <div class="parent">
+    <div class="child"></div>
+  </div>
+
+  css: 
+  .parent {
+    height: 800px;
+    border: 1px solid #ddd;
+  }
+  .child {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+  }
+
+(3) 利用postion属性实现水平垂直居中,宽高都需要固定
+  
+  html: 
+  <div class="parent">
+    <div class="child"></div>
+  </div>
+  css:
+  (a)
+  .parent {
+    height: 800px;
+    width: 800px;
+    border: 1px solid #ddd;
+    position: relative;
+  }
+  .child {
+    height: 200px;
+    width: 200px;
+    border: 1px solid #ddd;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -100px;
+    margin-top: -100px;
+  }
+
+  (b)
+  .parent {
+    height: 800px;
+    width: 800px;
+    border: 1px solid #ddd;
+    position: relative;
+  }
+  .child {
+    height: 200px;
+    width: 200px;
+    border: 1px solid #ddd;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+(4) 利用display=table-cell
+  html:
+  <div class="parent">
+    <div class="child"></div>
+  </div>
+  css:
+  .parent {
+    height: 800px;
+    width: 800px;
+    border: 1px solid #ddd;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .child {
+    height: 200px;
+    width: 200px;
+    border: 1px solid #ddd;
+    display: inline-block;
+  }

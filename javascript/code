@@ -1,0 +1,26 @@
+学习过程中遇到了一些好的代码
+
+1. 利用闭包实现计数器功能
+
+var uniqueInteger = (function() {
+  var counter = 0
+  return function() {
+    return counter++
+  }
+})()
+
+这段代码看着很简单，但是作用却很大，每调一次uniqueInteger()方法的时候，counter都会加1，既保证了数据的唯一性，也有效的防止恶意代码攻击。
+
+下面还有一个优化版本，可以创建多个计数器，而互不干扰
+
+function counter() {
+  var n = 0
+  return {
+    count: function() {
+      return n++
+    },
+    reset: function() {
+      return n = 0
+    }
+  }
+}
