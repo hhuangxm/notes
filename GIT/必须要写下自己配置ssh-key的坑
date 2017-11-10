@@ -1,0 +1,10 @@
+# 前言
+其实这个是一个挺逗比的事情，至少我觉得是。还是好好说说正事吧！
+
+#配置github的ssh-key
+
+配置ssh-key的目的就是为了提交代码的时候，不用麻烦的输入用户名和密码
+
++ 创建github对应的sshkey
+  <pre><code>ssh-keygen -t rsa -C email</code></pre>
+  <span style="color: red;">email</span>肯定要写具体的GitHub邮箱啦！
