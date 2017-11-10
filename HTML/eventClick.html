@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>eventClick</title>
+</head>
+<body>
+  <div onclick="f1" style="width: 100px; height: 50px; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center">
+    <button onclick="f2">clickme</button>
+  </div>
+
+  <script>
+    function f2() {
+      console.log('f2')
+    }
+    function f1() {
+      console.log('f1')
+    }
+  </script>
+</body>
+</html>
