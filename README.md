@@ -1,2 +1,2 @@
-=notes
+= notes
 something notes by my learn
