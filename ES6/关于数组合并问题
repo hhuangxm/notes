@@ -88,3 +88,5 @@ map.forEach((key,value) => {
   resultArr.push(obj);
 });
 
+lodash提供了uniqBy方法可以合并对象数组
+
